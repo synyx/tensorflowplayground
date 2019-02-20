@@ -16,12 +16,14 @@ tf.logging.set_verbosity(tf.logging.ERROR)
 pd.options.display.max_rows = 10
 pd.options.display.float_format = '{:.1f}'.format
 
-california_housing_dataframe = pd.read_csv("https://download.mlcc.google.com/mledu-datasets/california_housing_train.csv", sep=",")
+#dataframe = pd.read_csv("https://download.mlcc.google.com/mledu-datasets/california_housing_train.csv", sep=",")
+#
+#dataframe = dataframe.reindex(
+#    np.random.permutation(dataframe.index))
+#dataframe["median_house_value"] /= 1000.0
+#dataframe
 
-california_housing_dataframe = california_housing_dataframe.reindex(
-    np.random.permutation(california_housing_dataframe.index))
-california_housing_dataframe["median_house_value"] /= 1000.0
-california_housing_dataframe
+dataframe = pd.read_csv("broetchen.csv", sep=";")
 
 def my_input_fn(features, targets, batch_size=1, shuffle=True, num_epochs=None):
     """Trains a linear regression model of one feature.
@@ -71,9 +73,10 @@ def train_model(learning_rate, steps, batch_size, input_feature):
     steps_per_period = steps / periods
 
     my_feature = input_feature
-    my_feature_data = california_housing_dataframe[[my_feature]].astype('float32')
-    my_label = "median_house_value"
-    targets = california_housing_dataframe[my_label].astype('float32')
+    my_feature_data = dataframe[[my_feature]].astype('float32')
+    #my_label = "median_house_value"
+    my_label = "bestellmenge"
+    targets = dataframe[my_label].astype('float32')
 
     # Create input functions.
     training_input_fn = lambda: my_input_fn(my_feature_data, targets, batch_size=batch_size)
@@ -96,7 +99,8 @@ def train_model(learning_rate, steps, batch_size, input_feature):
     plt.title("Learned Line by Period")
     plt.ylabel(my_label)
     plt.xlabel(my_feature)
-    sample = california_housing_dataframe.sample(n=300)
+    #sample = dataframe.sample(n=300)
+    sample = dataframe.sample()
     plt.scatter(sample[my_feature], sample[my_label])
     colors = [cm.coolwarm(x) for x in np.linspace(-1, 1, periods)]
 
@@ -155,11 +159,11 @@ def train_model(learning_rate, steps, batch_size, input_feature):
 
     return calibration_data
 
-california_housing_dataframe["rooms_per_person"] = california_housing_dataframe["total_rooms"] / california_housing_dataframe["population"]
+#dataframe["rooms_per_person"] = dataframe["total_rooms"] / dataframe["population"]
 
 calibration_data = train_model(
     learning_rate=0.1,
-    steps=500,
-    batch_size=5,
-    input_feature="rooms_per_person"
+    steps=10,
+    batch_size=1,
+    input_feature="personen"
 )
