@@ -9,6 +9,8 @@ import sklearn.metrics as metrics
 import tensorflow as tf
 from IPython import display
 from tensorflow.python.data import Dataset
+from flask import Flask
+from flask import request
 
 tf.logging.set_verbosity(tf.logging.ERROR)
 pd.options.display.max_rows = 10
@@ -150,5 +152,23 @@ def predict(persons, temperature):
     for i in predict_result:
         print("Predicted value for %0.2f persons at %0.2f degrees: %0.8f" % (persons, temperature, i))
 
+    return "Predicted value for %0.2f persons at %0.2f degrees: %0.8f" % (persons, temperature, predict_result[0])
 
-predict(42, 7)
+
+app = Flask(__name__)
+
+
+@app.route('/')
+def index():
+    return 'Server Works!'
+
+
+@app.route('/predict')
+def predict_ctrl():
+    persons = float(request.args.get('persons'))
+    temperature = float(request.args.get('temperature'))
+    return predict(persons, temperature)
+
+
+if __name__ == '__main__':
+    app.run()
