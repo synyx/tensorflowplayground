@@ -46,7 +46,7 @@ def my_input_fn(features, targets, batch_size=1, shuffle=True, num_epochs=None):
     return features, labels
 
 
-def train_model(learning_rate, steps, batch_size, input_feature):
+def train_model(learning_rate, steps, batch_size, input_features):
     """Trains a linear regression model.
 
     Args:
@@ -54,19 +54,17 @@ def train_model(learning_rate, steps, batch_size, input_feature):
       steps: A non-zero `int`, the total number of training steps. A training step
         consists of a forward and backward pass using a single batch.
       batch_size: A non-zero `int`, the batch size.
-      input_feature: A `string` specifying a column from `california_housing_dataframe`
+      input_feature: Array of `string`s specifying columns from input data set
         to use as input feature.
 
     Returns:
-      A Pandas `DataFrame` containing targets and the corresponding predictions done
-      after training the model.
+        The trained linear regressor
     """
 
     periods = 10
     steps_per_period = steps / periods
 
-    my_feature = input_feature
-    my_feature_data = dataframe[[my_feature, "temperatur"]].astype('float32')
+    my_feature_data = dataframe[input_features].astype('float32')
     # my_label = "median_house_value"
     my_label = "bestellmenge"
     targets = dataframe[my_label].astype('float32')
@@ -76,7 +74,7 @@ def train_model(learning_rate, steps, batch_size, input_feature):
     predict_training_input_fn = lambda: my_input_fn(my_feature_data, targets, num_epochs=1, shuffle=False)
 
     # Create feature columns.
-    feature_columns = [tf.feature_column.numeric_column(my_feature), tf.feature_column.numeric_column("temperatur")]
+    feature_columns = [tf.feature_column.numeric_column(input_feature) for input_feature in input_features]
 
     # Create a linear regressor object.
     my_optimizer = tf.train.GradientDescentOptimizer(learning_rate=learning_rate)
@@ -133,7 +131,7 @@ linear_regressor = train_model(
     learning_rate=0.05,
     steps=10,
     batch_size=1,
-    input_feature="personen"
+    input_features=["personen", "temperatur"]
 )
 
 print("Training finished, predict something...")
