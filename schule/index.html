@@ -40,12 +40,28 @@
 					<p>was ist dieses machine learning, von dem man so viel hört?</p>
 					<blockquote class="fragment fade-in">"Machine learning (ML) is the scientific study of algorithms and statistical models that computer systems use to effectively perform a specific task without using explicit instructions, relying on patterns and inference instead. It is seen as a subset of artificial intelligence."</blockquote>
 				</section>
-				<section>
+				<section data-transition="slide-in none-out">
 					<h3>lineare regression</h3>
 					<ul>
 						<li class="fragment fade-in">problem: wieviele brötchen brauchen wir fürs nächste frühstück?</li>
 						<li class="fragment fade-in">das office hat die nötigen daten</li>
-						<li class="fragment fade-in">insert plot here</li>
+						<img src="broetchen_verzehr.png" class="fragment fade-in">
+					</ul>
+				</section>
+				<section data-transition="none-in none-out">
+					<h3>lineare regression</h3>
+					<ul>
+						<li>problem: wieviele brötchen brauchen wir fürs nächste frühstück?</li>
+						<li>das office hat die nötigen daten</li>
+						<img src="broetchen_verzehr_gerade.png">
+					</ul>
+				</section>
+				<section data-transition="none-in slide-out">
+					<h3>lineare regression</h3>
+					<ul>
+						<li>problem: wieviele brötchen brauchen wir fürs nächste frühstück?</li>
+						<li>das office hat die nötigen daten</li>
+						<img src="broetchen_verzehr_formel.png">
 					</ul>
 				</section>
 				<section>
@@ -63,6 +79,23 @@
 					<ul>
 						<li class="fragment fade-in">für mehrere eingabe-features:</li>
 						<li class="fragment fade-in">y' = b + w<sub>1</sub>*x<sub>1</sub> + w<sub>2</sub>*x<sub>2</sub> + w<sub>3</sub>*x<sub>3</sub></li>
+					</ul>
+				</section>
+				<section>
+					<h3>training und loss</h3>
+					<ul>
+						<li class="fragment fade-in"><b>training</b> des modells bedeutet, gute werte für <i>weight</i> und <i>bias</i> der einzelnen <i>feature</i>s zu finden</li>
+						<li class="fragment fade-in"><b>loss</b> ist die abweichung zwischen dem funktionswert (der vorhersage) und dem "echten" datenpunkt</li>
+						<img src="broetchen_verzehr_loss.png" class="fragment fade-in">
+					</ul>
+				</section>
+				<section>
+					<h3>training und loss</h3>
+					<ul>
+						<li class="fragment fade-in"><b>RMSE</b>: root mean square error</li>
+						<li class="fragment fade-in">weit verbreitete loss-funktion</li>
+						<li class="fragment fade-in">RMSE = &radic;<sup>1</sup>&frasl;<sub><i>N</i></sub> &Sigma;<sub>(<i>x,y</i> &isin; <i>D</i>)</sub> (<i>y - vorhersage</i>(<i>x</i>))<sup>2</sup></li>
+						<li class="fragment fade-in">wurzel der summe der durchschnittlichen, quadrierten abweichungen</li>
 					</ul>
 				</section>
 			</div>
