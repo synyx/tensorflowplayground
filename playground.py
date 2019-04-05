@@ -17,7 +17,7 @@ pd.options.display.max_rows = 10
 pd.options.display.float_format = '{:.1f}'.format
 
 dataframe = pd.read_csv("broetchen.csv", sep=";")
-
+dataframe["broetchen_verzehr"] = (dataframe["bestellmenge"] - dataframe["rest"])
 
 def my_input_fn(features, targets, batch_size=1, shuffle=True, num_epochs=None):
     """Trains a linear regression model of one feature.
@@ -67,8 +67,7 @@ def train_model(learning_rate, steps, batch_size, input_features):
     steps_per_period = steps / periods
 
     my_feature_data = dataframe[input_features].astype('float32')
-    # my_label = "median_house_value"
-    my_label = "bestellmenge"
+    my_label = "broetchen_verzehr"
     targets = dataframe[my_label].astype('float32')
 
     # Create input functions.
