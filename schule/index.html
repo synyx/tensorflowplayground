@@ -98,6 +98,45 @@
 						<li class="fragment fade-in">wurzel der summe der durchschnittlichen, quadrierten abweichungen</li>
 					</ul>
 				</section>
+				<section>
+					<h3>gradient descent</h3>
+					<ul>
+						<li class="fragment fade-in">eine methode, um optimale parameter (w, b) mit minimalem loss zu finden</li>
+						<li class="fragment fade-in">iteratives vorgehen:
+							<ol>
+								<li class="fragment fade-in">startwerte für parameter festlegen (z.B. w=0, b=0)</li>
+								<li class="fragment fade-in">loss berechnen</li>
+								<li class="fragment fade-in">neue parameter berechnen</li>
+								<li class="fragment fade-in">loss berechnen</li>
+								<li class="fragment fade-in">...</li>
+								<li class="fragment fade-in">der loss bleibt konstant: das modell <i>konvergiert</i></li>
+							</ol>
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h3>gradient descent</h3>
+					<ul>
+						<li class="fragment fade-in">loss / w ist eine konvexe kurve</li>
+						<img src="loss.png" width="60%" class="fragment fade-in">
+						<li class="fragment fade-in"><i>gradient</i>: die ableitung der funktion</li>
+						<li class="fragment fade-in">wir suchen das minimum der funktion</li>
+					</ul>
+				</section>
+				<section>
+					<h3>gradient descent</h3>
+					<ul>
+						<li class="fragment fade-in">nächster schritt: <i>w</i> in richtung des <b>negativen</b> gradienten (für den alten wert von <i>w</i>) verschieben</li>
+						<img src="gradient_descent.png" width="60%" class="fragment fade-in">
+					</ul>
+				</section>
+				<section>
+					<h3>gradient descent</h3>
+					<ul>
+						<li class="fragment fade-in"><i>w</i> und <i>b</i> werden beide auf diese weise optimiert</li>
+						<li class="fragment fade-in">für mehrere features: gradient ist eine partielle differentialgleichung 😱</li>
+					</ul>
+				</section>
 			</div>
 		</div>
 
