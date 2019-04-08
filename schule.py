@@ -42,6 +42,5 @@ def input_fn_predict():
 
 
 predict_result = linear_regressor.predict(input_fn_predict)
-predict_result = np.array([item['predictions'][0] for item in predict_result])
 
-print(predict_result[0])
+print(next(predict_result))
