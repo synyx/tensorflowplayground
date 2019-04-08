@@ -1,6 +1,5 @@
 import tensorflow as tf
 import pandas as pd
-import numpy as np
 from tensorflow.python.data import Dataset
 
 tf.logging.set_verbosity(tf.logging.ERROR)
