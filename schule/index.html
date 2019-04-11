@@ -133,6 +133,15 @@
 				<section>
 					<h3>gradient descent</h3>
 					<ul>
+						<li class="fragment fade-in">schrittgröße = <b>negativer</b> gradient * <b>learning rate</b></li>
+						<li class="fragment fade-in">kleine <b>learning rate</b>: model braucht sehr lange, um zu konvergieren</li>
+						<li class="fragment fade-in">große <b>learning rate</b>: minimum wird übersprungen</li>
+						<li class="fragment fade-in">die <b>learning rate</b> ist einer der <b>hyperparameter</b>, mit dem das modell optimiert wird</li>
+					</ul>
+				</section>
+				<section>
+					<h3>gradient descent</h3>
+					<ul>
 						<li class="fragment fade-in"><i>w</i> und <i>b</i> werden beide auf diese weise optimiert</li>
 						<li class="fragment fade-in">für mehrere features: gradient ist eine partielle differentialgleichung 😱</li>
 						<li class="fragment fade-in">tensorflow erledigt das für uns 👍</li>
@@ -152,23 +161,21 @@
 					<ul>
 						<li class="fragment fade-in">zwei high-level-apis:</li>
 						<li class="fragment fade-in">estimators</li>
+						<ul>
+							<li class="fragment fade-in">vor-definierte modelle</li>
+						</ul>
 						<li class="fragment fade-in">keras</li>
+						<ul>
+							<li class="fragment fade-in">modell wird aus <i>layer</i>n zusammengebaut</li>
+						</ul>
 					</ul>
 				</section>
 				<section>
-					<h3>tensorflow</h3>
+					<h3>code-beispiele</h3>
 					<ul>
-						<li class="fragment fade-in">estimator-api</li>
-						<li class="fragment fade-in">vor-definierte models</li>
-						<li class="fragment fade-in">code-beispiel</li>
-					</ul>
-				</section>
-				<section>
-					<h3>tensorflow</h3>
-					<ul>
-						<li class="fragment fade-in">keras-api</li>
-						<li class="fragment fade-in">model wird aus <i>layer</i>n zusammengebaut</li>
-						<li class="fragment fade-in">code-beispiel</li>
+						<li class="fragment fade-in">brötchen mit keras</li>
+						<li class="fragment fade-in">brötchen mit estimators</li>
+						<li class="fragment fade-in">bilder mit keras</li>
 					</ul>
 				</section>
 			</div>
