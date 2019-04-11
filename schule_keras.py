@@ -18,7 +18,9 @@ model.compile(optimizer=keras.optimizers.SGD(lr=0.008, clipnorm=5.),
               loss='mean_squared_error',
               metrics=['accuracy'])
 
-test_features = np.array(csv_data['personen'].astype('float32'))
+#test_features = np.array(csv_data['personen'].astype('float32'))
+test_features = [np.array(csv_data['personen'].astype('float32')), np.array(csv_data['temperatur'].astype('float32'))]
+
 test_labels = np.array(csv_data['broetchen_verzehr'].astype('float32'))
 
 model.fit(test_features, test_labels, epochs=75,
@@ -29,6 +31,7 @@ test_loss, test_acc = model.evaluate(test_features, test_labels)
 print('Test accuracy:', test_acc)
 print('Test loss:', test_loss)
 
-result = model.predict(np.array([42]), batch_size=1)
+#result = model.predict(np.array([42]), batch_size=1)
+result = model.predict((np.array([42]), np.array([7])), batch_size=1)
 
 print('Result:', result)
