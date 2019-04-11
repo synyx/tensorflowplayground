@@ -14,14 +14,15 @@ model = keras.Sequential([
     keras.layers.Dense(1, input_dim=1)
 ])
 
-model.compile(optimizer=keras.optimizers.SGD(lr=0.05, clipnorm=5.),
+model.compile(optimizer=keras.optimizers.SGD(lr=0.008, clipnorm=5.),
               loss='mean_squared_error',
               metrics=['accuracy'])
 
 test_features = np.array(csv_data['personen'].astype('float32'))
 test_labels = np.array(csv_data['broetchen_verzehr'].astype('float32'))
 
-model.fit(test_features, test_labels, epochs=5)
+model.fit(test_features, test_labels, epochs=75,
+          validation_split=0.08333333333)
 
 test_loss, test_acc = model.evaluate(test_features, test_labels)
 
